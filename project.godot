@@ -1,0 +1,31 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="IconTexture"
+config/description="A texture that draws the icon of a Theme resource."
+config/tags=PackedStringArray("addon")
+run/main_scene="res://examples/icon_texture/scene.tscn"
+config/features=PackedStringArray("4.4")
+config/icon="res://icon.png"
+
+[display]
+
+window/size/transparent=true
+window/per_pixel_transparency/allowed=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/icon_texture/plugin.cfg")
+
+[rendering]
+
+viewport/transparent_background=true
