@@ -17,15 +17,6 @@ run/main_scene="res://examples/icon_texture/scene.tscn"
 config/features=PackedStringArray("4.4")
 config/icon="res://icon.png"
 
-[display]
-
-window/size/transparent=true
-window/per_pixel_transparency/allowed=true
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/icon_texture/plugin.cfg")
-
-[rendering]
-
-viewport/transparent_background=true
