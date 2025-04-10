@@ -4,7 +4,7 @@
 class_name IconTexture extends AtlasTexture
 
 
-## A texture that draws the icon of a Theme resource.
+## A texture that draws an icon of a Theme resource.
 ##
 ## [Texture2D] resource that draws an icon property of a [Theme] resource
 ## by [member icon_name] and [member theme_type].[br][br]

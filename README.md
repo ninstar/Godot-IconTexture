@@ -1,6 +1,6 @@
 # <img src="./icon.png" width="24px"> IconTexture
 
-A texture that draws the icon of a Theme resource.
+A texture that draws an icon of a Theme resource.
 
 <img src="./examples/icon_texture/screenshot.png" alt="Example" width="100%">
 <img src="./examples/icon_texture/screenshot_2.png" alt="Icon Picker">

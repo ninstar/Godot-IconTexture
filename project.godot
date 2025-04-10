@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="IconTexture"
-config/description="A texture that draws the icon of a Theme resource."
+config/description="A texture that draws an icon of a Theme resource."
 config/tags=PackedStringArray("addon")
 run/main_scene="res://examples/icon_texture/scene.tscn"
 config/features=PackedStringArray("4.4")
