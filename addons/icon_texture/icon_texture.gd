@@ -23,8 +23,6 @@ class_name IconTexture extends AtlasTexture
 ## The [param theme_type] that the icon property is part of.
 @export var theme_type: StringName = &"": get = get_theme_type, set = set_theme_type
 
-@export_tool_button("Pick Icon", "Edit") var __icon_picker = __plugin_dialog_show
-
 
 ## Updates the texture. Called automatically whenever [member icon_name],
 ## [member theme_type] or [member theme] are changed.[br][br]
@@ -35,15 +33,6 @@ func update_icon() -> void:
 			atlas = current_theme.get_icon(icon_name, theme_type)
 			break
 
-
-#region Virtual methods
-
-func _set(property: StringName, value: Variant) -> bool:
-	if property == &"atlas":
-		return true
-	return false
-
-#endregion
 #region Getters & Setters
 
 # Getters
@@ -74,33 +63,5 @@ func set_icon_name(value: StringName):
 func set_theme_type(value: StringName):
 	theme_type = value
 	update_icon.call_deferred()
-
-#endregion
-#region Signals
-
-func __plugin_dialog_show() -> void:
-	const IconPicker = preload("uid://dog7l0oedqlns")
-	var dialog: IconPicker = (load("uid://du2ujc4aiqlls") as PackedScene).instantiate()
-	
-	dialog.visibility_changed.connect(__plugin_dialog_visibility_changed.bind(dialog))
-	dialog.icon_selected.connect(__plugin_dialog_icon_selected)
-	
-	dialog.previous_meta = [icon_name, theme_type]
-	dialog.active = true
-	
-	if theme != null:
-		dialog.target_theme = theme
-	
-	EditorInterface.popup_dialog_centered(dialog)
-
-
-func __plugin_dialog_visibility_changed(dialog: Window) -> void:
-	if not dialog.visible:
-		dialog.queue_free()
-
-
-func __plugin_dialog_icon_selected(new_icon_name: StringName, new_theme_type: StringName) -> void:
-	icon_name = new_icon_name
-	theme_type = new_theme_type
 
 #endregion
