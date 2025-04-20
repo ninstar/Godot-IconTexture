@@ -24,6 +24,12 @@ class_name IconTexture extends AtlasTexture
 @export var theme_type: StringName = &"": get = get_theme_type, set = set_theme_type
 
 
+## Shorthand for setting [member theme_type] and [member icon_name] at once.
+func set_icon(new_theme_type: StringName, new_icon_name: StringName) -> void:
+	theme_type = new_theme_type
+	icon_name = new_icon_name
+
+
 ## Updates the texture. Called automatically whenever [member icon_name],
 ## [member theme_type] or [member theme] are changed.[br][br]
 ## [b]Note:[/b] Automatic calls are deferred.
