@@ -51,7 +51,7 @@ func _ready() -> void:
 	type_list.set_item_metadata(0, &"")
 	type_list.select(0)
 	for type: String in icon_texture_theme.get_icon_type_list():
-		var icon: Texture2D = icon_texture_theme.get_icon(type, &"EditorIcons")
+		var icon: Texture2D = get_theme_icon(type, &"EditorIcons")
 		if icon == ThemeDB.fallback_icon:
 			icon = get_theme_icon(&"NodeDisabled", &"EditorIcons")
 		
@@ -90,7 +90,8 @@ func update_list() -> void:
 	if not is_ready:
 		return
 	
-	view_mode.icon = get_theme_icon(&"FileThumbnail" if grid_view else &"FileList", &"EditorIcons")
+	view_mode.icon = get_theme_icon(&"FileThumbnail" if not grid_view else &"FileList", &"EditorIcons")
+	view_mode.tooltip_text = "Grid view" if not grid_view else "List view"
 	
 	var selected_type: StringName = str(type_list.get_selected_metadata())
 	
