@@ -14,7 +14,7 @@ config/name="IconTexture"
 config/description="A texture that draws an icon of a Theme resource."
 config/tags=PackedStringArray("addon")
 run/main_scene="res://examples/icon_texture/scene.tscn"
-config/features=PackedStringArray("4.4")
+config/features=PackedStringArray("4.5")
 config/icon="res://icon.png"
 
 [editor_plugins]
