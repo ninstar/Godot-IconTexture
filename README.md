@@ -1,8 +1,17 @@
 # IconTexture
 
-A texture that draws an icon of a Theme resource.
+A texture that draws an icon from a Theme resource.
 
 <img src="./examples/icon_texture/screenshot.png" alt="Example" width="100%">
+
+## About
+
+This add-on allows you to easily use icons from any **Theme** resource by type and name.
+
+Changes automatically take effect whenever the theme bound to the **IconTexture** changes, ideal for GUI-heavy projects.
+
+Includes an icon picker for the IDE:
+
 <p align="center"><img src="./examples/icon_texture/screenshot_2.png" alt="Icon Picker"></p>
 
 ## Download
