@@ -4,9 +4,9 @@
 class_name IconTexture extends AtlasTexture
 
 
-## A texture that draws an icon of a Theme resource.
+## A texture that draws an icon from a Theme resource.
 ##
-## [Texture2D] resource that draws an icon property of a [Theme] resource
+## [Texture2D] resource that dynamically draws an icon property of a [Theme] resource
 ## by [member icon_name] and [member theme_type].[br][br]
 ## [b]Note:[/b] [b]IconTexture[/b] shares the same properties and limitations
 ## as [AtlasTexture].
@@ -24,21 +24,28 @@ class_name IconTexture extends AtlasTexture
 @export var theme_type: StringName = &"": get = get_theme_type, set = set_theme_type
 
 
-## Shorthand for setting [member theme_type] and [member icon_name] at once.
+## Shorthand for setting [member theme_type], [member icon_name] and calling [method update_texture].
 func set_icon(new_theme_type: StringName, new_icon_name: StringName) -> void:
 	theme_type = new_theme_type
 	icon_name = new_icon_name
 
 
-## Updates the texture. Called automatically whenever [member icon_name],
-## [member theme_type] or [member theme] are changed.[br][br]
-## [b]Note:[/b] Automatic calls are deferred.
-func update_icon() -> void:
+## Updates the [member AtlasTexture.atlas] with an icon from the [member theme] object.[br][br]
+## [b]Note:[/b] This method is is called automatically whenever [member theme], [member theme_type]
+## or [member icon_name] are changed.
+func update_texture() -> void:
 	for current_theme: Theme in [theme, ThemeDB.get_project_theme(), ThemeDB.get_default_theme()]:
-		if current_theme != null:
+		if current_theme != null and atlas != current_theme.get_icon(icon_name, theme_type):
 			atlas = current_theme.get_icon(icon_name, theme_type)
 			break
 
+
+#region Virtual methods
+
+func _init() -> void:
+	update_texture()
+
+#endregion
 #region Getters & Setters
 
 # Getters
@@ -58,16 +65,16 @@ func get_theme_type() -> StringName:
 
 func set_theme(value: Theme):
 	theme = value
-	update_icon.call_deferred()
+	update_texture()
 
 
 func set_icon_name(value: StringName):
 	icon_name = value
-	update_icon.call_deferred()
+	update_texture()
 
 
 func set_theme_type(value: StringName):
 	theme_type = value
-	update_icon.call_deferred()
+	update_texture()
 
 #endregion
