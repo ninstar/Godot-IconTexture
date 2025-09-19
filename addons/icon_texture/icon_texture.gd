@@ -35,9 +35,11 @@ func set_icon(new_theme_type: StringName, new_icon_name: StringName) -> void:
 ## or [member icon_name] are changed.
 func update_texture() -> void:
 	for current_theme: Theme in [theme, ThemeDB.get_project_theme(), ThemeDB.get_default_theme()]:
-		if current_theme != null and atlas != current_theme.get_icon(icon_name, theme_type):
+		if current_theme != null and current_theme.has_icon(icon_name, theme_type):
 			atlas = current_theme.get_icon(icon_name, theme_type)
-			break
+			return
+	
+	atlas = ThemeDB.fallback_icon
 
 
 #region Virtual methods
