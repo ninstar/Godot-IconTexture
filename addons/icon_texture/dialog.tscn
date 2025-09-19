@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://dog7l0oedqlns" path="res://addons/icon_texture/dialog.gd" id="1_dusf4"]
 
 [node name="Picker" type="AcceptDialog"]
-title = "Theme - Icons"
+oversampling_override = 1.0
+title = "Theme Icons"
 initial_position = 4
 size = Vector2i(512, 512)
 visible = true
@@ -16,22 +17,46 @@ anchor_bottom = 1.0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = -8.0
-offset_bottom = -49.0
+offset_bottom = -39.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Filter" type="HBoxContainer" parent="Box"]
 layout_mode = 2
 
+[node name="ThemeFilters" type="MenuButton" parent="Box/Filter"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Themes"
+item_count = 3
+popup/item_0/text = "IconTexture (null)"
+popup/item_0/checkable = 1
+popup/item_0/checked = true
+popup/item_0/id = 0
+popup/item_1/text = "Project theme"
+popup/item_1/checkable = 1
+popup/item_1/checked = true
+popup/item_1/id = 1
+popup/item_2/text = "Default theme"
+popup/item_2/checkable = 1
+popup/item_2/id = 2
+
+[node name="Separator" type="VSeparator" parent="Box/Filter"]
+layout_mode = 2
+
 [node name="Type" type="Label" parent="Box/Filter"]
 layout_mode = 2
-theme_type_variation = &"HeaderLarge"
+theme_type_variation = &"HeaderSmall"
 text = "Type: "
 
 [node name="TypeList" type="OptionButton" parent="Box/Filter"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+selected = 0
+item_count = 1
+popup/item_0/text = "Any"
+popup/item_0/id = 0
 
 [node name="Search" type="LineEdit" parent="Box/Filter"]
 unique_name_in_owner = true
@@ -58,7 +83,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_type_variation = &"HeaderLarge"
+theme_type_variation = &"HeaderMedium"
 text = "--- Icon(s)"
 
 [node name="SizeSlider" type="HSlider" parent="Box/Tools"]
@@ -67,7 +92,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 min_value = 16.0
-max_value = 64.0
+max_value = 128.0
 step = 8.0
 value = 24.0
 
@@ -91,9 +116,9 @@ icon_alignment = 1
 
 [connection signal="confirmed" from="." to="." method="confirm_selection"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="item_selected" from="Box/Filter/TypeList" to="." method="update_list" unbinds=1]
-[connection signal="text_changed" from="Box/Filter/Search" to="." method="update_list" unbinds=1]
+[connection signal="item_selected" from="Box/Filter/TypeList" to="." method="update_icon_list" unbinds=1]
+[connection signal="text_changed" from="Box/Filter/Search" to="." method="update_icon_list" unbinds=1]
 [connection signal="item_activated" from="Box/IconList" to="." method="hide" unbinds=1]
 [connection signal="item_activated" from="Box/IconList" to="." method="confirm_selection" unbinds=1]
-[connection signal="value_changed" from="Box/Tools/SizeSlider" to="." method="update_list" unbinds=1]
+[connection signal="value_changed" from="Box/Tools/SizeSlider" to="." method="update_icon_list" unbinds=1]
 [connection signal="pressed" from="Box/Tools/ViewMode" to="." method="_on_view_mode_pressed"]
