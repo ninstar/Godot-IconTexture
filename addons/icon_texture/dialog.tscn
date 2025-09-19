@@ -17,7 +17,7 @@ anchor_bottom = 1.0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = -8.0
-offset_bottom = -39.0
+offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -94,7 +94,7 @@ size_flags_vertical = 1
 min_value = 16.0
 max_value = 128.0
 step = 8.0
-value = 24.0
+value = 32.0
 
 [node name="Size" type="Label" parent="Box/Tools"]
 unique_name_in_owner = true
