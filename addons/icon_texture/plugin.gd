@@ -3,22 +3,29 @@ extends EditorPlugin
 
 
 const IconTextureInspector = preload("inspector.gd")
+const IconTexturePreviewer = preload("previewer.gd")
 const IconTextureDialog = preload("dialog.gd")
 
 
+var previewer: IconTexturePreviewer = null
 var inspector: IconTextureInspector = null
 var dialog_data: Dictionary = {}
 var dialog_rect := Rect2i(0, 0, 0, 0)
 
 
 func _enter_tree() -> void:
+	add_custom_type("IconTexture", "AtlasTexture", preload("icon_texture.gd"), preload("icon_texture.svg"))
+
 	inspector = IconTextureInspector.new()
 	inspector.button_pressed.connect(_on_inspector_button_pressed)
 	add_inspector_plugin(inspector)
-	add_custom_type("IconTexture", "AtlasTexture", preload("icon_texture.gd"), preload("icon_texture.svg"))
+	
+	previewer = IconTexturePreviewer.new()
+	EditorInterface.get_resource_previewer().add_preview_generator(previewer)
 
 
 func _exit_tree():
+	EditorInterface.get_resource_previewer().remove_preview_generator(previewer)
 	remove_inspector_plugin(inspector)
 	remove_custom_type("IconTexture")
 
