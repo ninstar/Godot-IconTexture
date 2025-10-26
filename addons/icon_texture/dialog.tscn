@@ -98,7 +98,7 @@ value = 32.0
 
 [node name="Size" type="Label" parent="Box/Tools"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 text = "---"
@@ -114,11 +114,16 @@ size_flags_horizontal = 4
 flat = true
 icon_alignment = 1
 
+[node name="ContextMenu" type="PopupMenu" parent="."]
+oversampling_override = 1.0
+
 [connection signal="confirmed" from="." to="." method="confirm_selection"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="item_selected" from="Box/Filter/TypeList" to="." method="update_icon_list" unbinds=1]
 [connection signal="text_changed" from="Box/Filter/Search" to="." method="update_icon_list" unbinds=1]
 [connection signal="item_activated" from="Box/IconList" to="." method="hide" unbinds=1]
 [connection signal="item_activated" from="Box/IconList" to="." method="confirm_selection" unbinds=1]
+[connection signal="item_clicked" from="Box/IconList" to="." method="_on_icon_list_item_clicked"]
 [connection signal="value_changed" from="Box/Tools/SizeSlider" to="." method="update_icon_list" unbinds=1]
 [connection signal="pressed" from="Box/Tools/ViewMode" to="." method="_on_view_mode_pressed"]
+[connection signal="index_pressed" from="ContextMenu" to="." method="_on_context_menu_index_pressed"]

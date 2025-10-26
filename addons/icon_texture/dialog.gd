@@ -5,6 +5,9 @@ extends AcceptDialog
 signal exit_data(data: Dictionary)
 
 
+const CODE_SNIPPET = "set_icon(&\"%s\", &\"%s\")"
+
+
 @onready var theme_filters: MenuButton = %ThemeFilters
 @onready var search: LineEdit = %Search
 @onready var type_list: OptionButton = %TypeList
@@ -13,6 +16,7 @@ signal exit_data(data: Dictionary)
 @onready var count_label: Label = %Count
 @onready var size_slider: HSlider = %SizeSlider
 @onready var size_label: Label = %Size
+@onready var context_menu: PopupMenu = $ContextMenu
 
 
 var data: Dictionary = {}
@@ -25,6 +29,7 @@ var is_ready: bool = false
 var include_icon_theme: bool = true
 var include_project_theme: bool = true
 var include_default_theme: bool = false
+var context_menu_icon_index: int = 0
 
 
 func _ready() -> void:
@@ -259,3 +264,39 @@ func _on_theme_filters_index_pressed(index: int) -> void:
 	
 	update_type_list()
 	update_icon_list()
+
+
+func _on_icon_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+	if mouse_button_index == MOUSE_BUTTON_RIGHT:
+		context_menu.clear()
+		context_menu.add_icon_item(get_theme_icon(&"ActionCopy", &"EditorIcons"), "Copy Icon Name")
+		context_menu.set_item_metadata(context_menu.item_count-1, &"copy_icon_name")
+		context_menu.add_icon_item(get_theme_icon(&"Node", &"EditorIcons"), "Copy Theme Type")
+		context_menu.set_item_metadata(context_menu.item_count-1, &"copy_theme_type")
+		context_menu.add_icon_item(get_theme_icon(&"GDScriptInternal", &"EditorIcons"), "Copy Code Snippet")
+		context_menu.set_item_metadata(context_menu.item_count-1, &"copy_snippet")
+		
+		if not icon_list.get_item_icon(index).is_built_in():
+			context_menu.add_separator()
+			context_menu.add_icon_item(get_theme_icon(&"ShowInFileSystem", &"EditorIcons"), "Show in FileSystem")
+			context_menu.set_item_metadata(context_menu.item_count-1, &"show_in_filesystem")
+		
+		context_menu_icon_index = index
+		
+		context_menu.popup(Rect2i(DisplayServer.mouse_get_position(), Vector2i.ZERO))
+
+
+func _on_context_menu_index_pressed(index: int) -> void:
+	var icon_index: int = context_menu_icon_index
+	match context_menu.get_item_metadata(index) as StringName:
+		&"copy_icon_name":
+			DisplayServer.clipboard_set(icon_list.get_item_metadata(icon_index)[&"name"])
+		&"copy_theme_type":
+			DisplayServer.clipboard_set(icon_list.get_item_metadata(icon_index)[&"theme_type"])
+		&"copy_snippet":
+			DisplayServer.clipboard_set(CODE_SNIPPET % [
+				icon_list.get_item_metadata(icon_index)[&"theme_type"],
+				icon_list.get_item_metadata(icon_index)[&"name"]])
+		&"show_in_filesystem":
+			EditorInterface.select_file(icon_list.get_item_icon(icon_index).resource_path)
+			hide()
