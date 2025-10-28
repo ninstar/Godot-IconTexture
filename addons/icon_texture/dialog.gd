@@ -2,7 +2,8 @@
 extends AcceptDialog
 
 
-signal exit_data(data: Dictionary)
+signal icon_selected(new_theme_type: StringName, new_icon_name: StringName)
+signal layout_save_requested(new_layout: Dictionary)
 
 
 const CODE_SNIPPET = "set_icon(&\"%s\", &\"%s\")"
@@ -19,17 +20,19 @@ const CODE_SNIPPET = "set_icon(&\"%s\", &\"%s\")"
 @onready var context_menu: PopupMenu = $ContextMenu
 
 
-var data: Dictionary = {}
-var icon_texture: IconTexture = null
-var icon_texture_theme: Theme = null
-var grid_view: bool = true
-var active: bool = false
-var is_ready: bool = false
+var layout: Dictionary = {}
+var icon_name: StringName = &""
+var theme_type: StringName = &""
+var icon_theme_resource: Theme = null
 
+var active: bool = false
+var grid_view: bool = true
 var include_icon_theme: bool = true
 var include_project_theme: bool = true
 var include_default_theme: bool = false
 var context_menu_icon_index: int = 0
+
+var _is_ready: bool = false
 
 
 func _ready() -> void:
@@ -39,32 +42,32 @@ func _ready() -> void:
 	# Set window icons
 	search.right_icon = get_theme_icon(&"Search", &"EditorIcons")
 	
-	# Load dialog data
-	search.text = data.get(&"search_text", search.text)
-	size_slider.set_value_no_signal(data.get(&"icon_size", size_slider.value))
-	grid_view = data.get(&"grid_view", grid_view)
-	include_icon_theme = data.get(&"include_icon_theme", include_icon_theme)
-	include_project_theme = data.get(&"include_project_theme", include_project_theme)
-	include_default_theme = data.get(&"include_default_theme", include_default_theme)
+	# Load dialog layout
+	search.text = layout.get(&"search_text", search.text)
+	size_slider.set_value_no_signal(layout.get(&"icon_size", size_slider.value))
+	grid_view = layout.get(&"grid_view", grid_view)
+	include_icon_theme = layout.get(&"include_icon_theme", include_icon_theme)
+	include_project_theme = layout.get(&"include_project_theme", include_project_theme)
+	include_default_theme = layout.get(&"include_default_theme", include_default_theme)
 	
 	# Theme filters
 	var popup: PopupMenu = theme_filters.get_popup()
-	if icon_texture.theme != null:
-		popup.set_item_text(0, "IconTexture (%s)" % icon_texture.theme.resource_path.get_file())
+	if icon_theme_resource != null:
+		popup.set_item_text(0, "IconTexture (%s)" % icon_theme_resource.resource_path.get_file())
 	popup.set_item_checked(0, include_icon_theme)
 	popup.set_item_checked(1, include_project_theme)
 	popup.set_item_checked(2, include_default_theme)
 	popup.index_pressed.connect(_on_theme_filters_index_pressed)
 	
 	# Ready
-	is_ready = true
+	_is_ready = true
 	
 	# Update type list
 	type_list.get_popup().about_to_popup.connect(_on_type_list_about_to_popup)
 	update_type_list()
 	
 	# Auto-select type filter
-	var type_filter: String = data.get(&"type_filter", type_list.get_item_text(type_list.selected))
+	var type_filter: String = layout.get(&"type_filter", type_list.get_item_text(type_list.selected))
 	for i: int in type_list.item_count:
 		if type_list.get_item_text(i) == type_filter:
 			type_list.select(i)
@@ -76,10 +79,7 @@ func _ready() -> void:
 	# Focus on selected icon
 	for i: int in icon_list.item_count:
 		var meta: Dictionary = icon_list.get_item_metadata(i)
-		if(
-				icon_texture.icon_name == meta.get(&"name", &"")
-				and icon_texture.theme_type == meta.get(&"theme_type", &"")
-		):
+		if icon_name == meta.get(&"name", &"") and theme_type == meta.get(&"theme_type", &""):
 			icon_list.select(i)
 			icon_list.ensure_current_is_visible()
 			break
@@ -97,7 +97,7 @@ func update_type_list() -> void:
 	# Filter themes
 	var themes: Array[Theme] = []
 	if include_icon_theme:
-		themes.append(icon_texture.theme)
+		themes.append(icon_theme_resource)
 	if include_project_theme:
 		themes.append(ThemeDB.get_project_theme())
 	if include_default_theme:
@@ -130,7 +130,7 @@ func update_type_list() -> void:
 
 
 func update_icon_list() -> void:
-	if not active or not is_ready:
+	if not active or not _is_ready:
 		return
 	
 	# Clear list
@@ -138,7 +138,7 @@ func update_icon_list() -> void:
 	
 	# Find available icons from type
 	var added_icons: PackedStringArray = []
-	var themes: Array[Theme] = [icon_texture.theme, ThemeDB.get_project_theme(), ThemeDB.get_default_theme()]
+	var themes: Array[Theme] = [icon_theme_resource, ThemeDB.get_project_theme(), ThemeDB.get_default_theme()]
 	var theme_names: Array[StringName] = [&"icon", &"project", &"default"]
 	for i: int in themes.size():
 		if themes[i] == null:
@@ -209,10 +209,10 @@ func confirm_selection() -> void:
 		return
 	
 	if icon_list.is_anything_selected():
-		if icon_texture != null:
-			var meta: Dictionary = icon_list.get_item_metadata(icon_list.get_selected_items()[0])
-			icon_texture.theme_type = meta.get(&"theme_type", &"")
-			icon_texture.icon_name = meta.get(&"name", &"")
+		var meta: Dictionary = icon_list.get_item_metadata(icon_list.get_selected_items()[0])
+		icon_name = meta.get(&"name", &"")
+		theme_type = meta.get(&"theme_type", &"")
+		icon_selected.emit(theme_type, icon_name)
 
 
 func _on_visibility_changed() -> void:
@@ -220,7 +220,8 @@ func _on_visibility_changed() -> void:
 		return
 	
 	if not visible:
-		data = {
+		layout = {
+			&"window_rect": Rect2i(position, size),
 			&"search_text": search.text,
 			&"type_filter": type_list.get_item_text(type_list.selected),
 			&"icon_size": size_slider.value,
@@ -228,9 +229,8 @@ func _on_visibility_changed() -> void:
 			&"include_icon_theme": include_icon_theme,
 			&"include_project_theme": include_project_theme,
 			&"include_default_theme": include_default_theme,
-			&"window_rect": Rect2i(position, size),
 		}
-		exit_data.emit(data)
+		layout_save_requested.emit(layout)
 
 
 func _on_view_mode_pressed() -> void:

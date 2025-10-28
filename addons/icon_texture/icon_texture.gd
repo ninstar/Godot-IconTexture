@@ -65,18 +65,21 @@ func get_theme_type() -> StringName:
 
 # Setters
 
-func set_theme(value: Theme):
+func set_theme(value: Theme) -> void:
 	theme = value
 	update_texture()
+	emit_changed()
 
 
-func set_icon_name(value: StringName):
+func set_icon_name(value: StringName) -> void:
 	icon_name = value
 	update_texture()
+	emit_changed()
 
 
-func set_theme_type(value: StringName):
+func set_theme_type(value: StringName) -> void:
 	theme_type = value
 	update_texture()
+	emit_changed()
 
 #endregion
