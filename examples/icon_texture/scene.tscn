@@ -1,4 +1,4 @@
-[gd_scene load_steps=197 format=3 uid="uid://db22c4pqp86i5"]
+[gd_scene format=3 uid="uid://db22c4pqp86i5"]
 
 [ext_resource type="Script" uid="uid://cb20l5iel2m15" path="res://examples/icon_texture/scene.gd" id="1_g2dj2"]
 [ext_resource type="Texture2D" uid="uid://q3rcaewhphqo" path="res://examples/icon_texture/icons/resources/video_stream_theora.svg" id="2_bjy5e"]
@@ -793,7 +793,7 @@ theme = ExtResource("4_pmf3c")
 icon_name = &"cylinder_shape_3d"
 theme_type = &"Resources"
 
-[node name="Example" type="MarginContainer"]
+[node name="Example" type="MarginContainer" unique_id=990955761]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -806,24 +806,24 @@ theme_override_constants/margin_bottom = 64
 script = ExtResource("1_g2dj2")
 icon_texture = SubResource("AtlasTexture_r11lr")
 
-[node name="Box" type="HBoxContainer" parent="."]
+[node name="Box" type="HBoxContainer" parent="." unique_id=1668082399]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 32
 
-[node name="Left" type="VBoxContainer" parent="Box"]
+[node name="Left" type="VBoxContainer" parent="Box" unique_id=1317154302]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 32
 
-[node name="IconTexture" type="VBoxContainer" parent="Box/Left"]
+[node name="IconTexture" type="VBoxContainer" parent="Box/Left" unique_id=500128212]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Box/Left/IconTexture"]
+[node name="Label" type="Label" parent="Box/Left/IconTexture" unique_id=1200750399]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_ipgr5")
@@ -831,70 +831,70 @@ text = "IconTexture"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Container" type="PanelContainer" parent="Box/Left/IconTexture"]
+[node name="Container" type="PanelContainer" parent="Box/Left/IconTexture" unique_id=166472474]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_nwcxb")
 
-[node name="Box" type="HBoxContainer" parent="Box/Left/IconTexture/Container"]
+[node name="Box" type="HBoxContainer" parent="Box/Left/IconTexture/Container" unique_id=1683458423]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Box" type="VBoxContainer" parent="Box/Left/IconTexture/Container/Box"]
+[node name="Box" type="VBoxContainer" parent="Box/Left/IconTexture/Container/Box" unique_id=444887262]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 16
 
-[node name="Type" type="HBoxContainer" parent="Box/Left/IconTexture/Container/Box/Box"]
+[node name="Type" type="HBoxContainer" parent="Box/Left/IconTexture/Container/Box/Box" unique_id=2023927602]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="Box/Left/IconTexture/Container/Box/Box/Type"]
+[node name="Label" type="Label" parent="Box/Left/IconTexture/Container/Box/Box/Type" unique_id=1963089119]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 1
 text = "theme_type"
 vertical_alignment = 1
 
-[node name="ThemeType" type="LineEdit" parent="Box/Left/IconTexture/Container/Box/Box/Type"]
+[node name="ThemeType" type="LineEdit" parent="Box/Left/IconTexture/Container/Box/Box/Type" unique_id=1931960119]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Nme" type="HBoxContainer" parent="Box/Left/IconTexture/Container/Box/Box"]
+[node name="Nme" type="HBoxContainer" parent="Box/Left/IconTexture/Container/Box/Box" unique_id=1385156341]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="Box/Left/IconTexture/Container/Box/Box/Nme"]
+[node name="Label" type="Label" parent="Box/Left/IconTexture/Container/Box/Box/Nme" unique_id=1085157943]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 1
 text = "icon_name "
 vertical_alignment = 1
 
-[node name="IconName" type="LineEdit" parent="Box/Left/IconTexture/Container/Box/Box/Nme"]
+[node name="IconName" type="LineEdit" parent="Box/Left/IconTexture/Container/Box/Box/Nme" unique_id=1976244301]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Separator" type="VSeparator" parent="Box/Left/IconTexture/Container/Box"]
+[node name="Separator" type="VSeparator" parent="Box/Left/IconTexture/Container/Box" unique_id=1760169803]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_4x0he")
 
-[node name="Preview" type="TextureRect" parent="Box/Left/IconTexture/Container/Box"]
+[node name="Preview" type="TextureRect" parent="Box/Left/IconTexture/Container/Box" unique_id=1271548453]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = SubResource("AtlasTexture_r11lr")
 expand_mode = 3
 stretch_mode = 3
 
-[node name="Actions" type="VBoxContainer" parent="Box/Left"]
+[node name="Actions" type="VBoxContainer" parent="Box/Left" unique_id=1842713177]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Box/Left/Actions"]
+[node name="Label" type="Label" parent="Box/Left/Actions" unique_id=644748612]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_ipgr5")
@@ -902,29 +902,29 @@ text = "Actions"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Container" type="PanelContainer" parent="Box/Left/Actions"]
+[node name="Container" type="PanelContainer" parent="Box/Left/Actions" unique_id=1713964352]
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_nwcxb")
 
-[node name="Scroll" type="ScrollContainer" parent="Box/Left/Actions/Container"]
+[node name="Scroll" type="ScrollContainer" parent="Box/Left/Actions/Container" unique_id=258459100]
 clip_contents = false
 layout_mode = 2
 
-[node name="Margin" type="MarginContainer" parent="Box/Left/Actions/Container/Scroll"]
+[node name="Margin" type="MarginContainer" parent="Box/Left/Actions/Container/Scroll" unique_id=1434567521]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_right = 12
 
-[node name="ActionIcons" type="GridContainer" parent="Box/Left/Actions/Container/Scroll/Margin"]
+[node name="ActionIcons" type="GridContainer" parent="Box/Left/Actions/Container/Scroll/Margin" unique_id=2086481862]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 columns = 2
 
-[node name="ActionCopy" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="ActionCopy" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=2133008035]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -932,7 +932,7 @@ text = "action_copy"
 icon = SubResource("AtlasTexture_4x0he")
 text_overrun_behavior = 3
 
-[node name="ActionCut" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="ActionCut" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=40555151]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -940,7 +940,7 @@ text = "action_cut"
 icon = SubResource("AtlasTexture_cx6x2")
 text_overrun_behavior = 3
 
-[node name="ActionPaste" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="ActionPaste" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=684100844]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -948,7 +948,7 @@ text = "action_paste"
 icon = SubResource("AtlasTexture_rjsgy")
 text_overrun_behavior = 3
 
-[node name="Duplicate" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="Duplicate" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=1384603950]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -956,7 +956,7 @@ text = "duplicate"
 icon = SubResource("AtlasTexture_b2b3i")
 text_overrun_behavior = 3
 
-[node name="Edit" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="Edit" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=211435356]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -964,7 +964,7 @@ text = "edit"
 icon = SubResource("AtlasTexture_w1iqr")
 text_overrun_behavior = 3
 
-[node name="EditPivot" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="EditPivot" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=592187926]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -972,7 +972,7 @@ text = "edit_pivot"
 icon = SubResource("AtlasTexture_joloi")
 text_overrun_behavior = 3
 
-[node name="ExternalLink" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="ExternalLink" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=1803906991]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -980,7 +980,7 @@ text = "external_link"
 icon = SubResource("AtlasTexture_ctnfy")
 text_overrun_behavior = 3
 
-[node name="FileList" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="FileList" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=1860867079]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -988,7 +988,7 @@ text = "file_list"
 icon = SubResource("AtlasTexture_at3ql")
 text_overrun_behavior = 3
 
-[node name="FileThumbnail" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="FileThumbnail" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=1166307021]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -996,7 +996,7 @@ text = "file_thumbnail"
 icon = SubResource("AtlasTexture_qry4x")
 text_overrun_behavior = 3
 
-[node name="FilenameFilter" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="FilenameFilter" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=630529492]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -1004,7 +1004,7 @@ text = "filename_filter"
 icon = SubResource("AtlasTexture_yk6bh")
 text_overrun_behavior = 3
 
-[node name="GuiVisibilityHidden" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="GuiVisibilityHidden" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=1033376125]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -1012,7 +1012,7 @@ text = "gui_visibility_hidden"
 icon = SubResource("AtlasTexture_c4l7h")
 text_overrun_behavior = 3
 
-[node name="GuiVisibilityVisible" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="GuiVisibilityVisible" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=9844928]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -1020,7 +1020,7 @@ text = "gui_visibility_visible"
 icon = SubResource("AtlasTexture_0x03s")
 text_overrun_behavior = 3
 
-[node name="HelpSearch" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="HelpSearch" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=1178666747]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -1028,7 +1028,7 @@ text = "help_search"
 icon = SubResource("AtlasTexture_yq5dt")
 text_overrun_behavior = 3
 
-[node name="Info" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="Info" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=1741914946]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -1036,7 +1036,7 @@ text = "info"
 icon = SubResource("AtlasTexture_xcbys")
 text_overrun_behavior = 3
 
-[node name="Key" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="Key" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=1919587012]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -1044,7 +1044,7 @@ text = "key"
 icon = SubResource("AtlasTexture_sbuox")
 text_overrun_behavior = 3
 
-[node name="Load" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="Load" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=1120719629]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -1052,7 +1052,7 @@ text = "load"
 icon = SubResource("AtlasTexture_51c20")
 text_overrun_behavior = 3
 
-[node name="Lock" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="Lock" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=1211548199]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -1060,7 +1060,7 @@ text = "lock"
 icon = SubResource("AtlasTexture_mmp77")
 text_overrun_behavior = 3
 
-[node name="PlayScene" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="PlayScene" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=1695931915]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -1068,7 +1068,7 @@ text = "play_scene"
 icon = SubResource("AtlasTexture_by4jx")
 text_overrun_behavior = 3
 
-[node name="Reload" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="Reload" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=1634779413]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -1076,7 +1076,7 @@ text = "reload"
 icon = SubResource("AtlasTexture_nkux6")
 text_overrun_behavior = 3
 
-[node name="Remove" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="Remove" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=471534807]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -1084,7 +1084,7 @@ text = "remove"
 icon = SubResource("AtlasTexture_pfr10")
 text_overrun_behavior = 3
 
-[node name="Save" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="Save" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=1847355774]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -1092,7 +1092,7 @@ text = "save"
 icon = SubResource("AtlasTexture_ef2ny")
 text_overrun_behavior = 3
 
-[node name="Search" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="Search" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=1241536145]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -1100,7 +1100,7 @@ text = "search"
 icon = SubResource("AtlasTexture_varw5")
 text_overrun_behavior = 3
 
-[node name="TextEditorPlay" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="TextEditorPlay" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=1460947514]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -1108,7 +1108,7 @@ text = "text_editor_play"
 icon = SubResource("AtlasTexture_05e10")
 text_overrun_behavior = 3
 
-[node name="Unlock" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="Unlock" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=714502864]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -1116,7 +1116,7 @@ text = "unlock"
 icon = SubResource("AtlasTexture_b0e86")
 text_overrun_behavior = 3
 
-[node name="Zoom" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons"]
+[node name="Zoom" type="Button" parent="Box/Left/Actions/Container/Scroll/Margin/ActionIcons" unique_id=1111535236]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/icon_max_width = 16
@@ -1124,18 +1124,18 @@ text = "zoom"
 icon = SubResource("AtlasTexture_fxav2")
 text_overrun_behavior = 3
 
-[node name="Right" type="VBoxContainer" parent="Box"]
+[node name="Right" type="VBoxContainer" parent="Box" unique_id=1840916956]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 32
 
-[node name="Nodes" type="VBoxContainer" parent="Box/Right"]
+[node name="Nodes" type="VBoxContainer" parent="Box/Right" unique_id=508407380]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Box/Right/Nodes"]
+[node name="Label" type="Label" parent="Box/Right/Nodes" unique_id=756691381]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_ipgr5")
@@ -1143,12 +1143,12 @@ text = "Nodes"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Container" type="PanelContainer" parent="Box/Right/Nodes"]
+[node name="Container" type="PanelContainer" parent="Box/Right/Nodes" unique_id=970997734]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_nwcxb")
 
-[node name="NodeIcons" type="ItemList" parent="Box/Right/Nodes/Container"]
+[node name="NodeIcons" type="ItemList" parent="Box/Right/Nodes/Container" unique_id=923647699]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -1245,12 +1245,12 @@ item_41/icon = SubResource("AtlasTexture_kv2kp")
 item_42/text = "world_environment"
 item_42/icon = SubResource("AtlasTexture_nrhp6")
 
-[node name="Resources" type="VBoxContainer" parent="Box/Right"]
+[node name="Resources" type="VBoxContainer" parent="Box/Right" unique_id=817451098]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Box/Right/Resources"]
+[node name="Label" type="Label" parent="Box/Right/Resources" unique_id=1557167817]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_ipgr5")
@@ -1258,166 +1258,166 @@ text = "Resources"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Container" type="PanelContainer" parent="Box/Right/Resources"]
+[node name="Container" type="PanelContainer" parent="Box/Right/Resources" unique_id=1011025017]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_nwcxb")
 
-[node name="ResourceIcons" type="HFlowContainer" parent="Box/Right/Resources/Container"]
+[node name="ResourceIcons" type="HFlowContainer" parent="Box/Right/Resources/Container" unique_id=1333347907]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ParticleProcessMaterial" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="ParticleProcessMaterial" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=592145498]
 layout_mode = 2
 tooltip_text = "particle_process_material"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_mrysq")
 
-[node name="PlaceholderMaterial" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="PlaceholderMaterial" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=2014712494]
 layout_mode = 2
 tooltip_text = "placeholder_material"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_75hxa")
 
-[node name="ShaderMaterial" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="ShaderMaterial" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=307101470]
 layout_mode = 2
 tooltip_text = "shader_material"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_bepqr")
 
-[node name="StyleBoxFlat" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="StyleBoxFlat" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=2138610744]
 layout_mode = 2
 tooltip_text = "style_box_flat"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_k6uth")
 
-[node name="StyleBoxLine" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="StyleBoxLine" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=367828532]
 layout_mode = 2
 tooltip_text = "style_box_line"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_13lkw")
 
-[node name="VideoStreamTheora" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="VideoStreamTheora" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=60522045]
 layout_mode = 2
 tooltip_text = "video_stream_theora"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_jc216")
 
-[node name="AudioBusLayout" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="AudioBusLayout" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=1750914705]
 layout_mode = 2
 tooltip_text = "audio_bus_layout"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_63yjk")
 
-[node name="AudioStream" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="AudioStream" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=423585149]
 layout_mode = 2
 tooltip_text = "audio_stream"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_dc8cj")
 
-[node name="AudioStreamGenerator" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="AudioStreamGenerator" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=204317765]
 layout_mode = 2
 tooltip_text = "audio_stream_generator"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_mpldc")
 
-[node name="AudioStreamMp3" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="AudioStreamMp3" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=1672602298]
 layout_mode = 2
 tooltip_text = "audio_stream_mp_3"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_fb32i")
 
-[node name="AudioStreamRandomizer" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="AudioStreamRandomizer" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=1367358619]
 layout_mode = 2
 tooltip_text = "audio_stream_randomizer"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_lijoa")
 
-[node name="InputEventJoypadButton" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="InputEventJoypadButton" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=918406438]
 layout_mode = 2
 tooltip_text = "input_event_joypad_button"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_vv2ym")
 
-[node name="InputEventJoypadMotion" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="InputEventJoypadMotion" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=1966408926]
 layout_mode = 2
 tooltip_text = "input_event_joypad_motion"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_20mff")
 
-[node name="InputEventMouseButton" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="InputEventMouseButton" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=1138268871]
 layout_mode = 2
 tooltip_text = "input_event_mouse_button"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_qy0cr")
 
-[node name="InputEventScreenTouch" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="InputEventScreenTouch" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=1051709766]
 layout_mode = 2
 tooltip_text = "input_event_screen_touch"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_lc7pu")
 
-[node name="InputEventShortcut" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="InputEventShortcut" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=1098992051]
 layout_mode = 2
 tooltip_text = "input_event_shortcut"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_agvn5")
 
-[node name="CylinderMesh" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="CylinderMesh" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=879309418]
 layout_mode = 2
 tooltip_text = "cylinder_mesh"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_y2yq5")
 
-[node name="MeshLibrary" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="MeshLibrary" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=301825200]
 layout_mode = 2
 tooltip_text = "mesh_library"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_kyhns")
 
-[node name="PrismMesh" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="PrismMesh" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=1653992804]
 layout_mode = 2
 tooltip_text = "prism_mesh"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_fjsk1")
 
-[node name="QuadMesh" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="QuadMesh" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=1660035528]
 layout_mode = 2
 tooltip_text = "quad_mesh"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_syjf6")
 
-[node name="SphereMesh" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="SphereMesh" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=1355466806]
 layout_mode = 2
 tooltip_text = "sphere_mesh"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_ce43h")
 
-[node name="BoxShape3d" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="BoxShape3d" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=2001340299]
 layout_mode = 2
 tooltip_text = "box_shape_3d"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_70jn4")
 
-[node name="CapsuleShape3d" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="CapsuleShape3d" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=1749199382]
 layout_mode = 2
 tooltip_text = "capsule_shape_3d"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_rrs5m")
 
-[node name="ConcavePolygonShape3d" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="ConcavePolygonShape3d" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=1374876302]
 layout_mode = 2
 tooltip_text = "concave_polygon_shape_3d"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_8ifv4")
 
-[node name="ConvexPolygonShape3d" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="ConvexPolygonShape3d" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=898519144]
 layout_mode = 2
 tooltip_text = "convex_polygon_shape_3d"
 theme_override_constants/icon_max_width = 24
 icon = SubResource("AtlasTexture_lfwrq")
 
-[node name="CylinderShape3d" type="Button" parent="Box/Right/Resources/Container/ResourceIcons"]
+[node name="CylinderShape3d" type="Button" parent="Box/Right/Resources/Container/ResourceIcons" unique_id=1393152998]
 layout_mode = 2
 tooltip_text = "cylinder_shape_3d"
 theme_override_constants/icon_max_width = 24

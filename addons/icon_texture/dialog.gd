@@ -15,10 +15,10 @@ const CODE_SNIPPET = "set_icon(&\"%s\", &\"%s\")"
 @onready var icon_list: ItemList = %IconList
 @onready var view_mode: Button = %ViewMode
 @onready var count_label: Label = %Count
-@onready var size_slider: HSlider = %SizeSlider
-@onready var size_label: Label = %Size
+@onready var texture_filter: Button = %TextureFilter
+@onready var size_box: SpinBox = %SizeBox
 @onready var context_menu: PopupMenu = $ContextMenu
-
+@onready var no_results: Label = %NoResults
 
 var layout: Dictionary = {}
 var icon_name: StringName = &""
@@ -26,6 +26,7 @@ var theme_type: StringName = &""
 var icon_theme_resource: Theme = null
 
 var active: bool = false
+var linear_filter: bool = false
 var grid_view: bool = true
 var include_icon_theme: bool = true
 var include_project_theme: bool = true
@@ -39,12 +40,18 @@ func _ready() -> void:
 	if not active:
 		return
 	
+	# Hide OK button
+	#get_ok_button().hide()
+	
 	# Set window icons
+	theme_filters.icon = get_theme_icon(&"ThemeDock", &"EditorIcons")
 	search.right_icon = get_theme_icon(&"Search", &"EditorIcons")
 	
 	# Load dialog layout
 	search.text = layout.get(&"search_text", search.text)
-	size_slider.set_value_no_signal(layout.get(&"icon_size", size_slider.value))
+	linear_filter = layout.get(&"linear_filter", linear_filter)
+	size_box.set_value_no_signal(layout.get(&"icon_size", size_box.value))
+	size_box.prefix = "%d ×" % size_box.value
 	grid_view = layout.get(&"grid_view", grid_view)
 	include_icon_theme = layout.get(&"include_icon_theme", include_icon_theme)
 	include_project_theme = layout.get(&"include_project_theme", include_project_theme)
@@ -53,16 +60,20 @@ func _ready() -> void:
 	# Theme filters
 	var popup: PopupMenu = theme_filters.get_popup()
 	if icon_theme_resource != null:
-		popup.set_item_text(0, "IconTexture (%s)" % icon_theme_resource.resource_path.get_file())
+		popup.set_item_text(0, icon_theme_resource.resource_path.get_file())
 	popup.set_item_checked(0, include_icon_theme)
 	popup.set_item_checked(1, include_project_theme)
 	popup.set_item_checked(2, include_default_theme)
 	popup.index_pressed.connect(_on_theme_filters_index_pressed)
 	
+	# Do not hide popup when toggling themes
+	popup.hide_on_checkable_item_selection = false
+	
 	# Ready
 	_is_ready = true
 	
 	# Update type list
+	type_list.tooltip_text = tr("Filter by Type")
 	type_list.get_popup().about_to_popup.connect(_on_type_list_about_to_popup)
 	update_type_list()
 	
@@ -82,6 +93,7 @@ func _ready() -> void:
 		if icon_name == meta.get(&"name", &"") and theme_type == meta.get(&"theme_type", &""):
 			icon_list.select(i)
 			icon_list.ensure_current_is_visible()
+			update_ok_button()
 			break
 
 
@@ -90,7 +102,7 @@ func update_type_list() -> void:
 	
 	# Clear list
 	type_list.clear()
-	type_list.add_item("Any")
+	type_list.add_item(tr("All"))
 	type_list.set_item_metadata(0, &"")
 	type_list.select(0)
 	
@@ -157,7 +169,7 @@ func update_icon_list() -> void:
 						or type.containsn(search.text)
 						or icon.containsn(search.text))
 				):
-					var icon_name: String = (type + ": " + icon) if selected_type.is_empty() else icon
+					var icon_name: String = (type + " - " + icon) if selected_type.is_empty() else icon
 					var meta: Dictionary = {
 						&"filter": theme_names[i],
 						&"name": icon,
@@ -165,7 +177,11 @@ func update_icon_list() -> void:
 					}
 					
 					icon_list.add_item(icon_name, themes[i].get_icon(icon, type))
-					icon_list.set_item_tooltip(icon_list.item_count-1, "Theme: %s\nType: %s\nName: %s" % [popup.get_item_text(i), type, icon])
+					icon_list.set_item_tooltip(icon_list.item_count-1, 
+							tr("Theme:") + (" %s\n" % tr(popup.get_item_text(i))) +
+							tr("Type:") + (" %s\n" % type) +
+							tr("Name:") + (" %s" % icon)
+						)
 					icon_list.set_item_metadata(icon_list.item_count-1, meta)
 					added_icons.append("%s.%s" % [type, icon])
 	added_icons.clear()
@@ -193,15 +209,26 @@ func update_icon_list() -> void:
 				icon_list.set_item_text(i, "")
 
 	# Set view mode
-	icon_list.fixed_icon_size = Vector2.ONE * size_slider.value
+	icon_list.fixed_icon_size = Vector2.ONE * size_box.value
+	icon_list.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR if linear_filter else CanvasItem.TEXTURE_FILTER_NEAREST
 	
 	# Update buttons
+	size_box.prefix = "%d ×" % size_box.value
+	texture_filter.icon = get_theme_icon(&"Line" if linear_filter else &"InterpRaw", &"EditorIcons")
+	texture_filter.tooltip_text = "Linear" if linear_filter else "Nearest"
 	view_mode.icon = get_theme_icon(&"FileThumbnail" if not grid_view else &"FileList", &"EditorIcons")
 	view_mode.tooltip_text = "Grid view" if not grid_view else "List view"
 	
 	# Update numbers
-	count_label.text = "%s Icon(s)" % icon_list.item_count
-	size_label.text = "YxY".replace("Y", str(size_slider.value).pad_decimals(0))
+	var icon_count: int = icon_list.item_count
+	count_label.text = tr_n("1 icon", "{num} icons", icon_count).format({"num": str(icon_count)}) if icon_count > 0 else ""
+	no_results.visible = icon_count <= 0
+
+	update_ok_button()
+
+
+func update_ok_button() -> void:
+	get_ok_button().text = "Select" if icon_list.item_count > 0 and icon_list.is_anything_selected() else "Close"
 
 
 func confirm_selection() -> void:
@@ -224,13 +251,22 @@ func _on_visibility_changed() -> void:
 			&"window_rect": Rect2i(position, size),
 			&"search_text": search.text,
 			&"type_filter": type_list.get_item_text(type_list.selected),
-			&"icon_size": size_slider.value,
+			&"linear_filter": linear_filter,
+			&"icon_size": size_box.value,
 			&"grid_view": grid_view,
 			&"include_icon_theme": include_icon_theme,
 			&"include_project_theme": include_project_theme,
 			&"include_default_theme": include_default_theme,
 		}
 		layout_save_requested.emit(layout)
+
+
+func _on_texture_filter_pressed() -> void:
+	if not active:
+		return
+	
+	linear_filter = not linear_filter
+	update_icon_list()
 
 
 func _on_view_mode_pressed() -> void:
@@ -269,11 +305,11 @@ func _on_theme_filters_index_pressed(index: int) -> void:
 func _on_icon_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
 	if mouse_button_index == MOUSE_BUTTON_RIGHT:
 		context_menu.clear()
-		context_menu.add_icon_item(get_theme_icon(&"ActionCopy", &"EditorIcons"), "Copy Icon Name")
-		context_menu.set_item_metadata(context_menu.item_count-1, &"copy_icon_name")
-		context_menu.add_icon_item(get_theme_icon(&"Node", &"EditorIcons"), "Copy Theme Type")
+		context_menu.add_icon_item(get_theme_icon(&"Node", &"EditorIcons"), "%s %s" % [tr("Copy"), tr("Type")])
 		context_menu.set_item_metadata(context_menu.item_count-1, &"copy_theme_type")
-		context_menu.add_icon_item(get_theme_icon(&"GDScriptInternal", &"EditorIcons"), "Copy Code Snippet")
+		context_menu.add_icon_item(get_theme_icon(&"ActionCopy", &"EditorIcons"), "Copy Name")
+		context_menu.set_item_metadata(context_menu.item_count-1, &"copy_icon_name")
+		context_menu.add_icon_item(get_theme_icon(&"GDScriptInternal", &"EditorIcons"), "%s Snippet" % tr("Copy"))
 		context_menu.set_item_metadata(context_menu.item_count-1, &"copy_snippet")
 		
 		if not icon_list.get_item_icon(index).is_built_in():
