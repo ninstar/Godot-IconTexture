@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/particle_process_material.svg-8df6c006d8bd9b1
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

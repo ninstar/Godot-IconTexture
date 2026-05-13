@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/key.svg-0617b8eea3fa5c0a51f7a662446fcb1b.dpit
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

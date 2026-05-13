@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/text_editor_play.svg-dc4f2a7d28be02eefff6b1c5
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

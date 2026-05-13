@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/action_copy.svg-597e6a1cc8f264dfdf72b15df0b20
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

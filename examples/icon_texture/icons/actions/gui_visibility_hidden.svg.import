@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/gui_visibility_hidden.svg-0c0f1001e1d303b432d
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

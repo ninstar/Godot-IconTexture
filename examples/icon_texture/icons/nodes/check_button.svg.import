@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/check_button.svg-75f7e77f1e8013e6aca6a02d3615
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

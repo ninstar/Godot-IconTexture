@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/cone_twist_joint_3d.svg-e1e60c7aea5a4cb961b6d
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

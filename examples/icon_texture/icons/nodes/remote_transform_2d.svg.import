@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/remote_transform_2d.svg-6e68a62f7457da1237d8d
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

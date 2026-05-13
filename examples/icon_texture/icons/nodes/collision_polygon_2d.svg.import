@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/collision_polygon_2d.svg-af8bff719646ce39aa37
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

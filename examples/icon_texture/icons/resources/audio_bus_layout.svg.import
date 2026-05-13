@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/audio_bus_layout.svg-4dd1ebdf6dd52351e44a014b
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

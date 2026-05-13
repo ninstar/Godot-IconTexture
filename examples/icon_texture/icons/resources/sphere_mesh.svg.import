@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/sphere_mesh.svg-5938d8c2e88afbf830dd89dc0c004
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/audio_stream_mp_3.svg-7cda7f3a098976c48baf6ed
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

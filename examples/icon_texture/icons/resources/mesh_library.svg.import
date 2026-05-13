@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/mesh_library.svg-e87bcdb084e11f061d0eebd47a68
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

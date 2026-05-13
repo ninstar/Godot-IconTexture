@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/menu_button.svg-c4a2e40bcd9628cba6a2cc7fa34b7
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/edit_pivot.svg-3efc095e24d3e92192fdbf0551062d
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/tile_map_layer.svg-ac18c7f3472cf8a991d3e3d038
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

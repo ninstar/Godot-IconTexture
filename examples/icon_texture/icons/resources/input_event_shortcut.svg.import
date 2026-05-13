@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/input_event_shortcut.svg-73384cd13857c860796b
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

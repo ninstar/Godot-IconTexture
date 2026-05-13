@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/lock.svg-7c3c324d1cbbf662767b456a27e77991.dpi
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

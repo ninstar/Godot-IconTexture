@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/path_follow_2d.svg-bcfb46b8ffe0b149eec7e727e9
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

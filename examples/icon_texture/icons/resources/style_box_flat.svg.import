@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/style_box_flat.svg-2618567ac84464293a98c2d7f1
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

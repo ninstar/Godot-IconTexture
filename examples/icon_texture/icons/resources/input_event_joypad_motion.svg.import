@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/input_event_joypad_motion.svg-1725f4003666bb2
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

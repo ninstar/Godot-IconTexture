@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/concave_polygon_shape_3d.svg-662e7cc9578cfc18
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

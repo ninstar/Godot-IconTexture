@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/soft_body_3d.svg-713c3a20f5c8df5d2c910d1c94f4
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

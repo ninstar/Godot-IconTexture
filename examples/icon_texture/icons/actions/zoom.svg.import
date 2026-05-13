@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/zoom.svg-c1a24ae2a4a6a3b292432eaaac5e3e17.dpi
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

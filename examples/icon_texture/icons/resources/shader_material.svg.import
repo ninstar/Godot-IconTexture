@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/shader_material.svg-2958708191cd7ad795845deaf
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

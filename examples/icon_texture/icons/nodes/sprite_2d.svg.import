@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/sprite_2d.svg-84ca4de16c981964375517d6f285c75
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

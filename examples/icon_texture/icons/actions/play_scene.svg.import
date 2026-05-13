@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/play_scene.svg-0512e7b3fdd1ea6651b02a48aaac5d
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

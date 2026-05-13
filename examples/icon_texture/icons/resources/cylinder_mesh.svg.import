@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/cylinder_mesh.svg-a19dd4f29cecf42ceb84c8ef51b
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true

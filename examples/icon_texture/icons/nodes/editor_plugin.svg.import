@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/editor_plugin.svg-7e44ad0958676331197020e0967
 
 [params]
 
-base_scale=1.0
+base_scale=4.0
 saturation=1.0
 color_map={}
 compress=true
