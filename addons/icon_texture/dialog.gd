@@ -259,6 +259,7 @@ func _on_visibility_changed() -> void:
 			&"include_default_theme": include_default_theme,
 		}
 		layout_save_requested.emit(layout)
+		queue_free()
 
 
 func _on_texture_filter_pressed() -> void:
